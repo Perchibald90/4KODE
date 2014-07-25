@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSArray *media;
 @property (nonatomic, strong) NSArray *images;
 
+@property (nonatomic, weak) IBOutlet UIScrollView *content;
 @property (nonatomic, weak) IBOutlet UIImageView *collage;
 @property (nonatomic, weak) IBOutlet UITextField *usernameTextField;
 @property (nonatomic, weak) IBOutlet UIButton *giveMeCollage;
@@ -34,7 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.images = [NSMutableArray new];
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.hud hide:YES];
     self.hud.mode = MBProgressHUDModeAnnularDeterminate;
@@ -71,8 +71,20 @@
     _images = images;
     self.hud.labelText = @"Collage creating...";
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.collage setImage:[CollageComposer getCollageForImages:_images]];
+        UIImage *collageImage = [CollageComposer getCollageForImages:_images];
+        [self.collage setImage:collageImage];
+
     });
+}
+
+- (IBAction)fullSize:(id)sender {
+    self.content.contentSize =CGSizeMake(self.collage.image.size.width, self.collage.image.size.height);
+    self.collage.frame = CGRectMake(0., 0., self.collage.image.size.width, self.collage.image.size.height);
+}
+
+- (IBAction)fittedSize:(id)sender {
+    self.content.contentSize =CGSizeMake(self.content.frame.size.width, self.content.frame.size.height);
+    self.collage.frame = CGRectMake(0., 0., self.content.frame.size.width, self.content.frame.size.height);
 }
 
 - (void)setProgressToHud:(double)progress {
@@ -92,7 +104,6 @@
         [self.hud show:YES];
         self.hud.labelText = [NSString stringWithFormat:@"Search %@", self.usernameTextField.text];
         [self.engine searchUsersWithString:self.usernameTextField.text withSuccess:^(NSArray *users, InstagramPaginationInfo *paginationInfo) {
-            [self.hud hide:YES];
             InstagramUser *user = users.firstObject;
             [self.engine getMediaForUser:user.Id withSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
                 self.media = media;
