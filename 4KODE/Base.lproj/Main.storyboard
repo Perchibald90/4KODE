@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -22,7 +22,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EGW-YS-wsh">
-                                <rect key="frame" x="199" y="70" width="114" height="30"/>
+                                <rect key="frame" x="199.00000000000003" y="70" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Give me collage!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,11 +32,11 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="vPf-IQ-FS1">
-                                <rect key="frame" x="0.0" y="108" width="320" height="471"/>
+                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="mZx-My-ZRb">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="471"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                 </subviews>
@@ -50,12 +50,13 @@
                                             <action selector="printContent:" destination="vXZ-lx-hvc" id="fMK-em-vEO"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Full size collage" id="jEA-Iz-C0U">
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JM7-uU-e0H"/>
+                                    <barButtonItem title="Full size" id="jEA-Iz-C0U">
                                         <connections>
                                             <action selector="fullSize:" destination="vXZ-lx-hvc" id="7qb-Rg-okW"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Fit collage to screen" id="15s-KS-hwv">
+                                    <barButtonItem title="Fit screen" id="15s-KS-hwv">
                                         <connections>
                                             <action selector="fittedSize:" destination="vXZ-lx-hvc" id="Bx6-3e-AFR"/>
                                         </connections>

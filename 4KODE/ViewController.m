@@ -49,7 +49,7 @@
     _media = media;
     if (media.count == 0)
         return;
-    [self.hud show:YES];
+    [self showLoadingProgresHud];
     self.hud.progress = 0.f;
     self.hud.labelText = @"Images downloading...";
     __block NSUInteger mediaSize = _media.count;
@@ -95,13 +95,18 @@
 
 - (void)hideLoadingProgressHud {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [self.hud hide:YES];
     });
 }
 
+- (void)showLoadingProgresHud {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.hud show:YES];
+    });
+}
 - (IBAction)giveMeCollage:(id)sender {
     if (self.usernameTextField.text.length > 0) {
-        [self.hud show:YES];
+        [self showLoadingProgresHud];
         self.hud.labelText = [NSString stringWithFormat:@"Search %@", self.usernameTextField.text];
         [self.engine searchUsersWithString:self.usernameTextField.text withSuccess:^(NSArray *users, InstagramPaginationInfo *paginationInfo) {
             InstagramUser *user = users.firstObject;
@@ -112,10 +117,11 @@
                 [self.hud hide:YES];
             }];
         } failure:^(NSError *error) {
-            [self.hud hide:YES];
+            [self hideLoadingProgressHud];
         }];
     }
 }
+
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
@@ -133,7 +139,7 @@
         printInfo.duplex = UIPrintInfoDuplexLongEdge;
         pic.printInfo = printInfo;
         pic.showsPageRange = YES;
-        pic.printingItem = self.collage.image;
+        pic.printingItem = self.collage.image;  
 
         void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) =
         ^(UIPrintInteractionController *pic, BOOL completed, NSError *error) {
