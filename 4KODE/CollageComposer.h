@@ -12,4 +12,7 @@
 
 + (UIImage*)getCollageForImages:(NSArray*)images;
 
++ (CGSize)getSizeForCollage:(NSArray*)images;
++ (NSMutableArray *)getSimpleValuesForImagesCount:(NSArray*)images;
+
 @end

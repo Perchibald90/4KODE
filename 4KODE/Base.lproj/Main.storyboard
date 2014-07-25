@@ -13,7 +13,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter username" textAlignment="center" minimumFontSize="17" id="ej4-hW-ngD">
-                                <rect key="frame" x="7" y="59" width="183" height="30"/>
+                                <rect key="frame" x="7" y="58" width="183" height="30"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -22,7 +22,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EGW-YS-wsh">
-                                <rect key="frame" x="198" y="59" width="114.00000000000001" height="30"/>
+                                <rect key="frame" x="198" y="59" width="114" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Give me collage!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,33 +41,34 @@
                                     </imageView>
                                 </subviews>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0px-Y1-bSp">
-                                <rect key="frame" x="7" y="21" width="135" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Show at full size">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="fullSize:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="bzS-gy-HTt"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ppx-wd-lzd">
-                                <rect key="frame" x="156" y="21" width="156" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Show fitted in screen">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="fittedSize:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="elm-Q7-Lnn"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="JdZ-9l-hrV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="action" id="fzP-hb-1E8">
+                                        <connections>
+                                            <action selector="printContent:" destination="vXZ-lx-hvc" id="fMK-em-vEO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Full size collage" id="jEA-Iz-C0U">
+                                        <connections>
+                                            <action selector="fullSize:" destination="vXZ-lx-hvc" id="7qb-Rg-okW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Fit collage to screen" id="15s-KS-hwv">
+                                        <connections>
+                                            <action selector="fittedSize:" destination="vXZ-lx-hvc" id="Bx6-3e-AFR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="collage" destination="mZx-My-ZRb" id="eXS-7C-Roh"/>
                         <outlet property="content" destination="vPf-IQ-FS1" id="VPG-Rd-9SD"/>
-                        <outlet property="giveMeCollage" destination="EGW-YS-wsh" id="Wdg-CL-5Jf"/>
+                        <outlet property="print" destination="fzP-hb-1E8" id="nIl-6S-Bee"/>
                         <outlet property="usernameTextField" destination="ej4-hW-ngD" id="Pcd-YE-Pcr"/>
                     </connections>
                 </viewController>

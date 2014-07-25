@@ -11,10 +11,10 @@
 #import "MBProgressHUD.h"
 #import "CollageComposer.h"
 
-@interface ViewController () <UITextFieldDelegate>{
+@interface ViewController () <UITextFieldDelegate, UIPrintInteractionControllerDelegate>{
     float maxX;
     float maxY;
-    
+
 }
 
 @property (atomic) InstagramEngine *engine;
@@ -24,7 +24,7 @@
 @property (nonatomic, weak) IBOutlet UIScrollView *content;
 @property (nonatomic, weak) IBOutlet UIImageView *collage;
 @property (nonatomic, weak) IBOutlet UITextField *usernameTextField;
-@property (nonatomic, weak) IBOutlet UIButton *giveMeCollage;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *print;
 
 @property (nonatomic, strong) MBProgressHUD *hud;
 
@@ -107,7 +107,10 @@
             InstagramUser *user = users.firstObject;
             [self.engine getMediaForUser:user.Id withSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
                 self.media = media;
-            } failure:^(NSError *error) {}];
+            } failure:^(NSError *error) {
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:@"That user did not uploaded any photos" delegate:Nil cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
+                [self.hud hide:YES];
+            }];
         } failure:^(NSError *error) {
             [self.hud hide:YES];
         }];
@@ -117,6 +120,34 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;
+}
+
+- (IBAction)printContent:(id)sender {
+    UIPrintInteractionController *pic = [UIPrintInteractionController sharedPrintController];
+    if  (pic && [UIPrintInteractionController canPrintData: UIImagePNGRepresentation(self.collage.image)] ) {
+        pic.delegate = self;
+
+        UIPrintInfo *printInfo = [UIPrintInfo printInfo];
+        printInfo.outputType = UIPrintInfoOutputPhoto;
+        printInfo.jobName = @"Collage printing";
+        printInfo.duplex = UIPrintInfoDuplexLongEdge;
+        pic.printInfo = printInfo;
+        pic.showsPageRange = YES;
+        pic.printingItem = self.collage.image;
+
+        void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) =
+        ^(UIPrintInteractionController *pic, BOOL completed, NSError *error) {
+            if (!completed && error)
+                NSLog(@"FAILED! due to error in domain %@ with error code %u",
+                      error.domain, error.code);
+        };
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+            [pic presentFromBarButtonItem:self.print animated:YES
+                        completionHandler:completionHandler];
+        } else {
+            [pic presentAnimated:YES completionHandler:completionHandler];
+        }
+    }
 }
 
 @end
