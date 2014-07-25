@@ -40,8 +40,8 @@
 		441089431980C41200AE6E9D /* InstagramPaginationInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4410892E1980C41200AE6E9D /* InstagramPaginationInfo.m */; };
 		441089441980C41200AE6E9D /* InstagramTag.m in Sources */ = {isa = PBXBuildFile; fileRef = 441089301980C41200AE6E9D /* InstagramTag.m */; };
 		441089451980C41200AE6E9D /* InstagramUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 441089321980C41200AE6E9D /* InstagramUser.m */; };
-		441089491980C67C00AE6E9D /* UIImage+mergeImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 441089481980C67C00AE6E9D /* UIImage+mergeImage.m */; };
 		4410894D1980CB6E00AE6E9D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4410894C1980CB6E00AE6E9D /* MBProgressHUD.m */; };
+		449EF30219821F3F00261001 /* CollageComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 449EF30119821F3F00261001 /* CollageComposer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,10 +113,10 @@
 		441089301980C41200AE6E9D /* InstagramTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramTag.m; sourceTree = "<group>"; };
 		441089311980C41200AE6E9D /* InstagramUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramUser.h; sourceTree = "<group>"; };
 		441089321980C41200AE6E9D /* InstagramUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramUser.m; sourceTree = "<group>"; };
-		441089471980C67C00AE6E9D /* UIImage+mergeImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+mergeImage.h"; sourceTree = "<group>"; };
-		441089481980C67C00AE6E9D /* UIImage+mergeImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+mergeImage.m"; sourceTree = "<group>"; };
 		4410894B1980CB6E00AE6E9D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4410894C1980CB6E00AE6E9D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		449EF30019821F3F00261001 /* CollageComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollageComposer.h; sourceTree = "<group>"; };
+		449EF30119821F3F00261001 /* CollageComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollageComposer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +183,8 @@
 				441088E41980C3EF00AE6E9D /* Main.storyboard */,
 				441088E71980C3EF00AE6E9D /* ViewController.h */,
 				441088E81980C3EF00AE6E9D /* ViewController.m */,
+				449EF30019821F3F00261001 /* CollageComposer.h */,
+				449EF30119821F3F00261001 /* CollageComposer.m */,
 				441088EA1980C3EF00AE6E9D /* Images.xcassets */,
 				441088D91980C3EF00AE6E9D /* Supporting Files */,
 			);
@@ -300,8 +302,6 @@
 		441089461980C65B00AE6E9D /* categories */ = {
 			isa = PBXGroup;
 			children = (
-				441089471980C67C00AE6E9D /* UIImage+mergeImage.h */,
-				441089481980C67C00AE6E9D /* UIImage+mergeImage.m */,
 			);
 			path = categories;
 			sourceTree = "<group>";
@@ -419,12 +419,12 @@
 				441088E91980C3EF00AE6E9D /* ViewController.m in Sources */,
 				441089341980C41200AE6E9D /* AFHTTPRequestOperationManager.m in Sources */,
 				441089361980C41200AE6E9D /* AFNetworkReachabilityManager.m in Sources */,
+				449EF30219821F3F00261001 /* CollageComposer.m in Sources */,
 				4410893A1980C41200AE6E9D /* AFURLResponseSerialization.m in Sources */,
 				441089401980C41200AE6E9D /* InstagramComment.m in Sources */,
 				441089381980C41200AE6E9D /* AFURLConnectionOperation.m in Sources */,
 				441089371980C41200AE6E9D /* AFSecurityPolicy.m in Sources */,
 				4410893D1980C41200AE6E9D /* InstagramEngine.m in Sources */,
-				441089491980C67C00AE6E9D /* UIImage+mergeImage.m in Sources */,
 				441089351980C41200AE6E9D /* AFHTTPSessionManager.m in Sources */,
 				441089441980C41200AE6E9D /* InstagramTag.m in Sources */,
 				441089391980C41200AE6E9D /* AFURLRequestSerialization.m in Sources */,
@@ -644,6 +644,7 @@
 				441089031980C3EF00AE6E9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		441089041980C3EF00AE6E9D /* Build configuration list for PBXNativeTarget "4KODETests" */ = {
 			isa = XCConfigurationList;
@@ -652,6 +653,7 @@
 				441089061980C3EF00AE6E9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
