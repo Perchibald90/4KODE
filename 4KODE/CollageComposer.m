@@ -88,6 +88,9 @@
     int columnMax = height / ((UIImage*)images.firstObject).size.height;
     for (int i = 0; i < rowsMax; i++) {
         for (int j = 0; j < columnMax; j++) {
+            if (images.count <= i*columnMax + j) {
+                continue;
+            }
             UIImage *img = images[i*columnMax + j];
             CGPoint imagePoint = CGPointMake(i * img.size.width, j * img.size.height);
             [img drawAtPoint:imagePoint];
