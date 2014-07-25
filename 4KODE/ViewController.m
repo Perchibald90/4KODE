@@ -108,7 +108,7 @@
             [self.engine getMediaForUser:user.Id withSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
                 self.media = media;
             } failure:^(NSError *error) {
-                [[[UIAlertView alloc] initWithTitle:@"Error" message:@"That user did not uploaded any photos" delegate:Nil cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%@ user did not uploaded any photos", self.usernameTextField.text] delegate:Nil cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
                 [self.hud hide:YES];
             }];
         } failure:^(NSError *error) {
