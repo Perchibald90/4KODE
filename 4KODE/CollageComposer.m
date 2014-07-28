@@ -21,7 +21,6 @@
     int remainder = t % 2;
     if (remainder > 0) {
         t = t - remainder;
-//        [array addObject:[NSNumber numberWithInt:remainder]];
     }
     while(i<=t) {
         if(t%i==0) {
@@ -35,7 +34,6 @@
 
 + (CGSize)getSizeForCollage:(NSArray*)images {
     NSMutableArray *array = [CollageComposer getSimpleValuesForImagesCount:images];
-    NSLog(@"Simple values %@", array);
     CGSize size = CGSizeZero;
     int minDiff = -1;
     if (array.count == 1) {
@@ -74,7 +72,6 @@
         size.width = size.width * img.size.width;
         size.height = size.height * img.size.height;
     }
-    NSLog(@"%@", NSStringFromCGSize(size));
     return size;
 }
 

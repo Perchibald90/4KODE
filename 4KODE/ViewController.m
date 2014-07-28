@@ -37,7 +37,7 @@
     [super viewDidLoad];
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.hud hide:YES];
-    self.hud.mode = MBProgressHUDModeAnnularDeterminate;
+    self.hud.mode = MBProgressHUDModeIndeterminate;
     self.hud.labelText = @"Loading";
     self.engine = [InstagramEngine sharedEngine];
     self.collage.contentMode = UIViewContentModeScaleAspectFit;
@@ -50,17 +50,14 @@
     if (media.count == 0)
         return;
     [self showLoadingProgresHud];
-    self.hud.progress = 0.f;
     self.hud.labelText = @"Images downloading...";
     __block NSUInteger mediaSize = _media.count;
-    NSLog(@"%u images downloaded", mediaSize);
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
         NSMutableArray *temp = [NSMutableArray new];
         for (int i = 0; i < mediaSize; i++) {
             InstagramMedia *m = _media[i];
             [temp addObject:[UIImage imageWithData:[NSData dataWithContentsOfURL:m.standardResolutionImageURL]]];
-            float progress = ((float)i / mediaSize);
-            [self setProgressToHud:(progress)];
+            self.hud.labelText = [NSString stringWithFormat:@"Images downloading %u/%u ", i, mediaSize];
         }
         self.images = temp;
         [self hideLoadingProgressHud];
@@ -87,12 +84,6 @@
     self.collage.frame = CGRectMake(0., 0., self.content.frame.size.width, self.content.frame.size.height);
 }
 
-- (void)setProgressToHud:(double)progress {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.hud.progress = progress;
-    });
-}
-
 - (void)hideLoadingProgressHud {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.hud hide:YES];
@@ -114,7 +105,7 @@
                 self.media = media;
             } failure:^(NSError *error) {
                 [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%@ user did not uploaded any photos", self.usernameTextField.text] delegate:Nil cancelButtonTitle:@"ok" otherButtonTitles: nil] show];
-                [self.hud hide:YES];
+                [self hideLoadingProgressHud];
             }];
         } failure:^(NSError *error) {
             [self hideLoadingProgressHud];
