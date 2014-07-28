@@ -110,6 +110,8 @@
         } failure:^(NSError *error) {
             [self hideLoadingProgressHud];
         }];
+    } else {
+        [[[UIAlertView alloc] initWithTitle:@"" message:@"Sorry, you should provide username." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
     }
 }
 

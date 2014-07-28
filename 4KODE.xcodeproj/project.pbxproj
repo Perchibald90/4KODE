@@ -176,6 +176,7 @@
 		441088D81980C3EF00AE6E9D /* 4KODE */ = {
 			isa = PBXGroup;
 			children = (
+				810F5E461985EBF20036E269 /* iPad */,
 				441089461980C65B00AE6E9D /* categories */,
 				441089071980C41200AE6E9D /* libs */,
 				441088E11980C3EF00AE6E9D /* AppDelegate.h */,
@@ -313,6 +314,13 @@
 				4410894C1980CB6E00AE6E9D /* MBProgressHUD.m */,
 			);
 			path = MBProgressHud;
+			sourceTree = "<group>";
+		};
+		810F5E461985EBF20036E269 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -565,7 +573,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "4KODE/4KODE-Prefix.pch";
 				INFOPLIST_FILE = "4KODE/4KODE-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -578,7 +588,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "4KODE/4KODE-Prefix.pch";
 				INFOPLIST_FILE = "4KODE/4KODE-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
